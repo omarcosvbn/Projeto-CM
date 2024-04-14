@@ -14,18 +14,25 @@ public class WonkasFactory : MonoBehaviour{
 
     // DEFINE LIST WITH UPGRADES
     Upgrade[] _Upgrades = new Upgrade[]{
-        new Upgrade { Name = "Attack speed (projectiles)", Description = "Increases shooting speed of projectiles by X%", Rarity = "Common", Increase = 20 },
-        new Upgrade { Name = "Projectile damage", Description = "Increases projectile damage by X%", Rarity = "Common", Increase = 20 },
-        new Upgrade { Name = "Projectile size", Description = "Increases size of projectiles by X%", Rarity = "Common", Increase = 30 },
-        new Upgrade { Name = "Pierce", Description = "Increases number of enemies that projectile can pierce through +X", Rarity = "Rare", Increase = 1 },
-        new Upgrade { Name = "Precision", Description = "Your projectiles are more accurate +X%", Rarity = "Common", Increase = 20},
-        new Upgrade { Name = "Greater view", Description = "You will see in greater distance by X", Rarity = "Rare", Increase = 30 },
-        new Upgrade { Name = "Crit chance", Description = "Greater chance to do crit by X%", Rarity = "Rare", Increase = 10 },
-        new Upgrade { Name = "Crit multiplier", Description = "Crit does more damage by X", Rarity = "Common", Increase = 15 },
-        new Upgrade { Name = "Area damage", Description = "Greater area damage by X%", Rarity = "Rare", Increase = 25 },
-        new Upgrade { Name = "Train health", Description = "Increases hitpoints of the train by X%", Rarity = "Rare", Increase = 15 },
-        new Upgrade { Name = "Train repair", Description = "Repairs your train by X", Rarity = "Rare", Increase = 5 },
-        new Upgrade { Name = "Level up faster", Description = "Level up faster by X%", Rarity = "Epic", Increase = 5 }
+        new Upgrade { Name = "More cacao pods", Description = "You invest in transportation to get more cacao pods to your factory.", Boost= "Chocolate production + 50%", Order = 1, Cost= 50, Increase = 50 },
+        new Upgrade { Name = "Bigger roasters", Description = "More chocolate can be roasted simultaneously.", Boost= "Chocolate production + 50%", Order = 2, Cost= 50, Increase = 50 },
+        new Upgrade { Name = "Chocolate Tempering Machine", Description = "Install advanced machines for faster and more precise chocolate tempering, resulting in better quality chocolate", Boost= "Chocolate production + 50%", Order = 3, Cost= 50, Increase = 50 },
+        new Upgrade { Name = "Extra Sugar", Description = "People became more addicted to your chocolate", Boost= "Sales +100%", Order = 4, Cost= 150, Increase = 100 },
+        new Upgrade { Name = "Oompa Loompas", Description = "You take a trip to Loompaland and invite its inhabitants to work at your factory in exchange for cocoa beans.", Boost= "Automate production", Order = 5, Cost= 50, Increase = 0 },
+        new Upgrade { Name = "Chocolate Tasting Room", Description = "Create a luxurious tasting room where visitors can sample a variety of chocolate creations.", Boost= "Sales +50%", Order = 6, Cost= 50, Increase = 50 },
+
+        new Upgrade { Name = "Bubblegum", Description = "You want create more than just chocolate. How about bubblegum?", Boost= "New factory sector", Order = 7, Cost= 50, Increase = 0 },
+        new Upgrade { Name = "New flavor - Breakfast", Description = "You have had a ground-breaking idea. A meal flavored Bubblegum.", Boost= "Bubblegum production +33.33%", Order = 8, Cost= 50, Increase = 33 },
+        new Upgrade { Name = "New flavor - Lunch", Description = "Take your previous idea to the next level by creating another meal based flavor.", Boost= "Bubblegum production +33.33%", Order = 9, Cost= 50, Increase = 33},
+        new Upgrade { Name = "New flavor - Dinner", Description = "Since you have created breakfast and lunch flavored gum, might as well finish it off with a dinner flavored one", Boost= "Bubblegum production +33.33%", Order = 10, Cost= 50, Increase = 33},
+        new Upgrade { Name = "3-Course's Dinner Gum", Description = "A final, more sophisticated version of the dinner flavor. WARNING: unexpected side effects may occur upon consumption", Boost= "Bubblegum production +100%", Order = 11, Cost= 50, Increase = 100},
+
+        new Upgrade { Name = "Oompa Loompa Wellness program", Description = "Implement a wellness program to ensure the health and happiness of your workers", Boost= "Less energy drained from Ommpa Loompa", Order = 12, Cost= 50, Increase = 0},
+        new Upgrade { Name = "Oompa Loompa Eficiency Training", Description = "Boost production speed with better-trained Oompa Loompas", Boost= "Production Speed +100", Order = 13, Cost= 50, Increase = 100},
+        new Upgrade { Name = "Oompa Loompa Retirement plan", Description = "Implement a retirement plan for aging Oompa Loompas to boost morale", Boost= "Production Speed +100", Order = 14, Cost= 50, Increase = 100},
+
+
+
     };
 
     [SerializeField] private Button Upgrade_button1;
@@ -85,42 +92,48 @@ public class WonkasFactory : MonoBehaviour{
      // UPGRADES
     public void UpgradeChosen(string Upgrade_chosen)
     {
-        if (Upgrade_chosen == "Attack speed (projectiles)"){
+        if (Upgrade_chosen == "More cacao pods"){
             // Attack_speed += increase;
-            Debug.Log("Attack speed (projectiles)");
+            Debug.Log("More cacao pods");
         }
-        else if (Upgrade_chosen == "Projectile damage"){
-            Debug.Log("Projectile damage");
+        else if (Upgrade_chosen == "Bigger roasters"){
+            Debug.Log("Bigger roasters");
         }
-        else if (Upgrade_chosen == "Projectile size"){
-            Debug.Log("Projectile size");
+        else if (Upgrade_chosen == "Chocolate Tempering Machine"){
+            Debug.Log("Chocolate Tempering Machine");
         }
-        else if (Upgrade_chosen == "Pierce"){
-            Debug.Log("Pierce");
+        else if (Upgrade_chosen == "Extra Sugar"){
+            Debug.Log("Extra Sugar");
         }
-        else if (Upgrade_chosen == "Precision"){
-            Debug.Log("Precision");
+        else if (Upgrade_chosen == "Oompa Loompas"){
+            Debug.Log("Oompa Loompas");
         }
-        else if (Upgrade_chosen == "Train health"){
-            Debug.Log("Train health");
+        else if (Upgrade_chosen == "Chocolate Tasting Room"){
+            Debug.Log("Chocolate Tasting Room");
         }
-        else if (Upgrade_chosen == "Train repair"){
-            Debug.Log("Train repair");
+        else if (Upgrade_chosen == "Bubblegum"){
+            Debug.Log("Bubblegum");
         }
-        else if (Upgrade_chosen == "Level up faster"){
-            Debug.Log("Level up faster");
+        else if (Upgrade_chosen == "New flavor - Breakfast"){
+            Debug.Log("New flavor - Breakfast");
         }
-        else if (Upgrade_chosen == "Greater view"){
-            Debug.Log("Greater view");
+        else if (Upgrade_chosen == "New flavor - Lunch"){
+            Debug.Log("New flavor - Lunch");
         }
-        else if (Upgrade_chosen == "Area damage"){
-            Debug.Log("Area damage");
+        else if (Upgrade_chosen == "New flavor - Dinner"){
+            Debug.Log("New flavor - Dinner");
         }
-        else if (Upgrade_chosen == "Crit chance"){
-            Debug.Log("Crit chance");
+        else if (Upgrade_chosen == "3-Course's Dinner Gum"){
+            Debug.Log("3-Course's Dinner Gum");
         }
-        else if (Upgrade_chosen == "Crit multiplier"){
-            Debug.Log("Crit multiplier");
+        else if (Upgrade_chosen == "Oompa Loompa Wellness program"){
+            Debug.Log("Oompa Loompa Wellness program");
+        }
+        else if (Upgrade_chosen == "Oompa Loompa Eficiency Training"){
+            Debug.Log("Oompa Loompa Eficiency Training");
+        }
+        else if (Upgrade_chosen == "Oompa Loompa Retirement plan"){
+            Debug.Log("Oompa Loompa Retirement plan");
         }
     }
 
@@ -140,7 +153,9 @@ public class WonkasFactory : MonoBehaviour{
     public class Upgrade{
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Rarity { get; set; }
+        public string Boost { get; set; }
+        public double Cost { get; set; }
+        public int Order { get; set; }
         public float Increase { get; set; }
     }
 
