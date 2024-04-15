@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 
 
@@ -10,6 +11,7 @@ public class WonkasFactory : MonoBehaviour{
 
     public Text moneyText;
     public double money;
+    public double moneyToUpdate;
     public float upgrades;
 
     // DEFINE LIST WITH UPGRADES
@@ -42,6 +44,8 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text Upgrade_DescriptionText3;
     [SerializeField] private Text Upgrade_DescriptionText4;
 
+    [SerializeField] private Image moneyBar;
+
 
     public void Start(){
         money = 0;
@@ -51,7 +55,16 @@ public class WonkasFactory : MonoBehaviour{
     
     public void Update(){
         money += 1 * upgrades * Time.deltaTime;
-        moneyText.text = "Money: " + money.ToString("F2");
+        moneyText.text = "Money: " + moneyToUpdate.ToString("F2");
+
+        if(moneyBar.fillAmount < 1){
+            moneyBar.fillAmount += 0.1f * Time.deltaTime;
+        }
+        else if(moneyBar.fillAmount >= 1){
+            moneyToUpdate += money;
+            money = 0;
+            moneyBar.fillAmount = 0;
+        }
     }
 
     public void ButtonsSet(){
@@ -80,12 +93,34 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade_DescriptionText4.text = Upgrade_4.Name;
     }
 
+    public void RemoveUpgrade(string upgradeName){
+        // Find the index of the upgrade with the given name
+        int indexToRemove = -1;
+        for (int i = 0; i < _Upgrades.Length; i++){
+            if (_Upgrades[i].Name == upgradeName)
+            {
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // If the upgrade with the given name was found, remove it
+        if (indexToRemove != -1){
+            List<Upgrade> upgradesList = new List<Upgrade>(_Upgrades);
+            upgradesList.RemoveAt(indexToRemove);
+            _Upgrades = upgradesList.ToArray();
+        }
+
+        ButtonsSet();
+    }
+
      // UPGRADES
     public void UpgradeChosen(string upgradeChosen){
         if (upgradeChosen == "More cacao pods"){
-            if(money >= 15f){
-                money -= 15f;
-                upgrades += 10f;
+            if(moneyToUpdate >= 15f){
+                moneyToUpdate -= 15f;
+                upgrades += 1000f;
+                RemoveUpgrade("More cacao pods");
             }
             Debug.Log("More cacao pods");
         }
