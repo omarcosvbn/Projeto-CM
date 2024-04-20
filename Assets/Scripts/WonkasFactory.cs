@@ -3,16 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+
+
 
 
 
 public class WonkasFactory : MonoBehaviour{
-
-    public Text moneyText;
-    public double money;
-    public double moneyToUpdate;
-    public float upgrades;
 
     // DEFINE LIST WITH UPGRADES
     Upgrade[] _Upgrades = new Upgrade[]{
@@ -45,25 +41,48 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text Upgrade_DescriptionText4;
 
     [SerializeField] private Image moneyBar;
+    [SerializeField] public Text moneyText;
+    [SerializeField] private Image stockBar;
+    [SerializeField] private Text stockText;
+
+    private double money;
+    private float upgrades;
+    private int stock;
+    private float stockToUpdate;
+    private int maxStock;
 
 
     public void Start(){
-        money = 0;
         upgrades = 1;
+        stock = 0;
+        maxStock = 10;
+
         ButtonsSet();
     }
     
     public void Update(){
-        money += 1 * upgrades * Time.deltaTime;
-        moneyText.text = "Money: " + moneyToUpdate.ToString("F2");
+        moneyText.text = "Money: " + money.ToString("F2");
+
+        if(stock < maxStock) stockToUpdate += 2.9f * Time.deltaTime;
+        if(stock > maxStock) stock = maxStock;
+        stockText.text = stock + "/" + maxStock;
 
         if(moneyBar.fillAmount < 1){
-            moneyBar.fillAmount += 0.1f * Time.deltaTime;
+            moneyBar.fillAmount += 0.2f * Time.deltaTime;
         }
         else if(moneyBar.fillAmount >= 1){
-            moneyToUpdate += money;
-            money = 0;
+            money += upgrades * stock;
+            stock = 0;
             moneyBar.fillAmount = 0;
+        }
+
+        if(stockBar.fillAmount < 1 && stock < maxStock){
+            stockBar.fillAmount += 0.8f * Time.deltaTime;
+        }
+        else if(stockBar.fillAmount >= 1){
+            stock += (int)Mathf.Round(stockToUpdate);
+            stockToUpdate = 0;
+            stockBar.fillAmount = 0;
         }
     }
 
@@ -117,8 +136,8 @@ public class WonkasFactory : MonoBehaviour{
      // UPGRADES
     public void UpgradeChosen(string upgradeChosen){
         if (upgradeChosen == "More cacao pods"){
-            if(moneyToUpdate >= 15f){
-                moneyToUpdate -= 15f;
+            if(money >= 15f){
+                money -= 15f;
                 upgrades += 1000f;
                 RemoveUpgrade("More cacao pods");
             }
