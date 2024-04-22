@@ -5,9 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-
-
-
 public class WonkasFactory : MonoBehaviour{
 
     // DEFINE LIST WITH UPGRADES
@@ -44,18 +41,22 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] public Text moneyText;
     [SerializeField] private Image stockBar;
     [SerializeField] private Text stockText;
+    [SerializeField] private Text Oompas;
 
     private double money;
     private float upgrades;
     private int stock;
     private float stockToUpdate;
     private int maxStock;
+    private int oompaQuantity;
+    private float oompaGrade;
 
 
     public void Start(){
         upgrades = 1;
         stock = 0;
         maxStock = 10;
+        oompaGrade = 0.5f;
 
         ButtonsSet();
     }
@@ -71,7 +72,8 @@ public class WonkasFactory : MonoBehaviour{
             moneyBar.fillAmount += 0.2f * Time.deltaTime;
         }
         else if(moneyBar.fillAmount >= 1){
-            money += upgrades * stock;
+            //ajustar valores de upgrade aqui
+            money += upgrades * stock + oompaQuantity * oompaGrade;
             stock = 0;
             moneyBar.fillAmount = 0;
         }
@@ -84,6 +86,8 @@ public class WonkasFactory : MonoBehaviour{
             stockToUpdate = 0;
             stockBar.fillAmount = 0;
         }
+        
+        Oompas.text = "Oompa-Loompas: " + oompaQuantity.ToString();
     }
 
     public void ButtonsSet(){
@@ -182,6 +186,10 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Oompa Loompa Retirement plan"){
             Debug.Log("Oompa Loompa Retirement plan");
         }
+    }
+
+    public void OompaBuy(){
+        oompaQuantity += 1;
     }
 
     public class Upgrade{
