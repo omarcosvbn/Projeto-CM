@@ -24,7 +24,11 @@ public class WonkasFactory : MonoBehaviour{
 
         new Upgrade {Name = "Oompa Loompa Wellness program", Description = "Implement a wellness program to ensure the health and happiness of your workers", Boost= "Less energy drained from Ommpa Loompa", Order = 12, Cost= 50, Increase = 0},
         new Upgrade {Name = "Oompa Loompa Eficiency Training", Description = "Boost production speed with better-trained Oompa Loompas", Boost= "Production Speed +100", Order = 13, Cost= 50, Increase = 100},
-        new Upgrade {Name = "Oompa Loompa Retirement plan", Description = "Implement a retirement plan for aging Oompa Loompas to boost morale", Boost= "Production Speed +100", Order = 14, Cost= 50, Increase = 100}
+        new Upgrade {Name = "Oompa Loompa Retirement plan", Description = "Implement a retirement plan for aging Oompa Loompas to boost morale", Boost= "Production Speed +100", Order = 14, Cost= 50, Increase = 100},
+        
+        
+        
+        new Upgrade {Name = "", Description = "", Boost= "", Order = 100, Cost= 0, Increase = 0}
     };
 
     [SerializeField] private Button Upgrade_button1;
@@ -43,6 +47,10 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text stockText;
     [SerializeField] private Text Oompas;
 
+    [SerializeField] private AudioSource upgradeSound;
+
+    [SerializeField] private Image rightFactory;
+
     private double money;
     private float upgrades;
     private int stock;
@@ -57,7 +65,7 @@ public class WonkasFactory : MonoBehaviour{
         stock = 0;
         maxStock = 10;
         oompaGrade = 0.5f;
-
+        rightFactory.enabled = false;
         ButtonsSet();
     }
     
@@ -97,10 +105,10 @@ public class WonkasFactory : MonoBehaviour{
             availableUpgrades.Add(i);
         }
 
-        Upgrade Upgrade_1 = _Upgrades[availableUpgrades[0]];
-        Upgrade Upgrade_2 = _Upgrades[availableUpgrades[1]];
-        Upgrade Upgrade_3 = _Upgrades[availableUpgrades[2]];
-        Upgrade Upgrade_4 = _Upgrades[availableUpgrades[3]];
+        Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         // Setting text
         Upgrade_button1.transform.GetChild(0).GetComponent<Text>().text = Upgrade_1.Name;
@@ -143,47 +151,62 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 15f){
                 money -= 15f;
                 upgrades += 1000f;
+                upgradeSound.Play();
                 RemoveUpgrade("More cacao pods");
             }
             Debug.Log("More cacao pods");
         }
         else if (upgradeChosen == "Bigger roasters"){
+            RemoveUpgrade("Bigger roasters");
             Debug.Log("Bigger roasters");
         }
         else if (upgradeChosen == "Chocolate Tempering Machine"){
+            RemoveUpgrade("Chocolate Tempering Machine");
             Debug.Log("Chocolate Tempering Machine");
         }
         else if (upgradeChosen == "Extra Sugar"){
+            RemoveUpgrade("Extra Sugar");
             Debug.Log("Extra Sugar");
         }
         else if (upgradeChosen == "Oompa Loompas"){
+            RemoveUpgrade("Oompa Loompas");
             Debug.Log("Oompa Loompas");
         }
         else if (upgradeChosen == "Chocolate Tasting Room"){
+            RemoveUpgrade("Chocolate Tasting Room");
             Debug.Log("Chocolate Tasting Room");
         }
         else if (upgradeChosen == "Bubblegum"){
+            rightFactory.enabled = true;
+            RemoveUpgrade("Bubblegum");
             Debug.Log("Bubblegum");
         }
         else if (upgradeChosen == "New flavor - Breakfast"){
+            RemoveUpgrade("New flavor - Breakfast");
             Debug.Log("New flavor - Breakfast");
         }
         else if (upgradeChosen == "New flavor - Lunch"){
+            RemoveUpgrade("New flavor - Lunch");
             Debug.Log("New flavor - Lunch");
         }
         else if (upgradeChosen == "New flavor - Dinner"){
+            RemoveUpgrade("New flavor - Dinner");
             Debug.Log("New flavor - Dinner");
         }
         else if (upgradeChosen == "3-Course's Dinner Gum"){
+            RemoveUpgrade("3-Course's Dinner Gum");
             Debug.Log("3-Course's Dinner Gum");
         }
         else if (upgradeChosen == "Oompa Loompa Wellness program"){
+            RemoveUpgrade("Oompa Loompa Wellness program");
             Debug.Log("Oompa Loompa Wellness program");
         }
         else if (upgradeChosen == "Oompa Loompa Eficiency Training"){
+            RemoveUpgrade("Oompa Loompa Eficiency Training");
             Debug.Log("Oompa Loompa Eficiency Training");
         }
         else if (upgradeChosen == "Oompa Loompa Retirement plan"){
+            RemoveUpgrade("Oompa Loompa Retirement plan");
             Debug.Log("Oompa Loompa Retirement plan");
         }
     }
