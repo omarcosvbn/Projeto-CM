@@ -43,56 +43,81 @@ public class WonkasFactory : MonoBehaviour{
 
     [SerializeField] private Image moneyBar;
     [SerializeField] public Text moneyText;
-    [SerializeField] private Image stockBar;
-    [SerializeField] private Text stockText;
+    [SerializeField] private Text chocStockText;
+    [SerializeField] private Text gumStockText;
+    [SerializeField] private Text gobStockText;
     [SerializeField] private Text Oompas;
 
     [SerializeField] private AudioSource upgradeSound;
 
     [SerializeField] private Image rightFactory;
+    [SerializeField] private Image leftFactory;
+    [SerializeField] private Image topFactory;
 
     private double money;
     private float upgrades;
-    private int stock;
-    private float stockToUpdate;
-    private int maxStock;
+    private int chocStock;
+    private int gumStock;
+    private int gobStock;
     private int oompaQuantity;
     private float oompaGrade;
+
+    private float chocStockTimer = 0f;
+    private float chocStockUpdateInterval = 5f; // Update stock every x seconds
+
+    private float gumStockTimer = 0f;
+    private float gumStockUpdateInterval = 5f; // Update stock every x seconds
+
+    private float gobStockTimer = 0f;
+    private float gobStockUpdateInterval = 5f; // Update stock every x seconds
 
 
     public void Start(){
         upgrades = 1;
-        stock = 0;
-        maxStock = 10;
+        chocStock = 0;
+        gumStock = 0;
+        gobStock = 0;
         oompaGrade = 0.5f;
         rightFactory.enabled = false;
+        leftFactory.enabled = false;
+        topFactory.enabled = false;
         ButtonsSet();
     }
     
     public void Update(){
         moneyText.text = "Money: " + money.ToString("F2");
 
-        if(stock < maxStock) stockToUpdate += 2.9f * Time.deltaTime;
-        if(stock > maxStock) stock = maxStock;
-        stockText.text = stock + "/" + maxStock;
+        chocStockTimer += Time.deltaTime;
+        if (chocStockTimer >= chocStockUpdateInterval) {
+            chocStock += 1;
+            chocStockText.text = chocStock.ToString();
+            chocStockTimer = 0f;
+        }
+
+        gumStockTimer += Time.deltaTime;
+        if (gumStockTimer >= gumStockUpdateInterval) {
+            gumStock += 1;
+            gumStockText.text = gumStock.ToString();
+            gumStockTimer = 0f;
+        }
+
+        gobStockTimer += Time.deltaTime;
+        if (gobStockTimer >= gobStockUpdateInterval) {
+            gobStock += 1;
+            gobStockText.text = gobStock.ToString();
+            gobStockTimer = 0f;
+        }
 
         if(moneyBar.fillAmount < 1){
-            moneyBar.fillAmount += 0.2f * Time.deltaTime;
+            moneyBar.fillAmount += 0.02f * Time.deltaTime;
         }
         else if(moneyBar.fillAmount >= 1){
             //ajustar valores de upgrade aqui
-            money += upgrades * stock + oompaQuantity * oompaGrade;
-            stock = 0;
+            money += upgrades * chocStock + upgrades * gumStock + upgrades * gobStock + oompaQuantity * oompaGrade;
+            chocStock = 0;
+            gumStock = 0;
+            gobStock = 0;
             moneyBar.fillAmount = 0;
-        }
-
-        if(stockBar.fillAmount < 1 && stock < maxStock){
-            stockBar.fillAmount += 0.8f * Time.deltaTime;
-        }
-        else if(stockBar.fillAmount >= 1){
-            stock += (int)Mathf.Round(stockToUpdate);
-            stockToUpdate = 0;
-            stockBar.fillAmount = 0;
         }
         
         Oompas.text = "Oompa-Loompas: " + oompaQuantity.ToString();
