@@ -65,6 +65,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Image rightFactory;
     [SerializeField] private Image leftFactory;
     [SerializeField] private Image topFactory;
+    [SerializeField] private GameObject oompaLoompa;
 
     private double money;
     private float upgrades;
@@ -93,6 +94,7 @@ public class WonkasFactory : MonoBehaviour{
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
+        oompaLoompa.SetActive(false);
         ButtonsSet();
     }
     
@@ -225,6 +227,7 @@ public class WonkasFactory : MonoBehaviour{
                 money -= 15f;
                 upgrades += 1000f;
                 upgradeSound.Play();
+                oompaLoompa.SetActive(true);
                 RemoveUpgrade("Oompa Loompas");
             }
             Debug.Log("Oompa Loompas");
