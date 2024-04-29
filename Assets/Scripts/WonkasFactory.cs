@@ -65,6 +65,9 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Image rightFactory;
     [SerializeField] private Image leftFactory;
     [SerializeField] private Image topFactory;
+    [SerializeField] private Image GumStock;
+    [SerializeField] private Image GobstopperStock;
+
     [SerializeField] private GameObject oompaLoompa;
 
     private double money;
@@ -74,6 +77,9 @@ public class WonkasFactory : MonoBehaviour{
     private int gobStock;
     private int oompaQuantity;
     private float oompaGrade;
+    private bool gumAvailable;
+    private bool gobAvailable;
+
 
     private float chocStockTimer = 0f;
     private float chocStockUpdateInterval = 5f; // Update stock every x seconds
@@ -91,9 +97,14 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
+        money = 1000;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
+        GumStock.enabled = false;
+        GobstopperStock.enabled = false;
+        gumAvailable = false;
+        gobAvailable = false;
         oompaLoompa.SetActive(false);
         ButtonsSet();
     }
@@ -109,14 +120,14 @@ public class WonkasFactory : MonoBehaviour{
         }
 
         gumStockTimer += Time.deltaTime;
-        if (gumStockTimer >= gumStockUpdateInterval) {
+        if (gumStockTimer >= gumStockUpdateInterval && gumAvailable == true) {
             gumStock += 1;
             gumStockText.text = gumStock.ToString();
             gumStockTimer = 0f;
         }
 
         gobStockTimer += Time.deltaTime;
-        if (gobStockTimer >= gobStockUpdateInterval) {
+        if (gobStockTimer >= gobStockUpdateInterval && gobAvailable == true) {
             gobStock += 1;
             gobStockText.text = gobStock.ToString();
             gobStockTimer = 0f;
@@ -247,6 +258,8 @@ public class WonkasFactory : MonoBehaviour{
                 upgrades += 1000f;
                 upgradeSound.Play();
                 rightFactory.enabled = true;
+                GumStock.enabled = true;
+                gumAvailable = true;
                 RemoveUpgrade("Bubblegum");
             }
             Debug.Log("Bubblegum");
@@ -293,6 +306,8 @@ public class WonkasFactory : MonoBehaviour{
                 upgrades += 1000f;
                 upgradeSound.Play();
                 leftFactory.enabled = true;
+                GobstopperStock.enabled = true;
+                gobAvailable = true;
                 RemoveUpgrade("Gobstoppers");
             }
             Debug.Log("Gobstoppers");
