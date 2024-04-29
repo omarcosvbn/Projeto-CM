@@ -53,6 +53,8 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text Upgrade_DescriptionText3;
     [SerializeField] private Text Upgrade_DescriptionText4;
 
+    [SerializeField] private Text DescriptionText;
+
     [SerializeField] private Image moneyBar;
     [SerializeField] public Text moneyText;
     [SerializeField] private Text chocStockText;
@@ -69,6 +71,11 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Image GobstopperStock;
 
     [SerializeField] private GameObject oompaLoompa;
+
+    [SerializeField] private Buttons button1;
+    [SerializeField] private Buttons button2;
+    [SerializeField] private Buttons button3;
+    [SerializeField] private Buttons button4;
 
     private double money;
     private float upgrades;
@@ -146,6 +153,25 @@ public class WonkasFactory : MonoBehaviour{
         }
         
         Oompas.text = "Oompa-Loompas: " + oompaQuantity.ToString();
+
+
+        // CHOOSING UPGRADE FROM UPGRADE ARRAY
+        List<int> availableUpgrades = new List<int>();
+        for (int i = 0; i < _Upgrades.Length; i++){
+            availableUpgrades.Add(i);
+        }
+
+        Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
+
+        if(button1.isOn == true) DescriptionText.text = Upgrade_1.Description;
+        else if(button2.isOn == true) DescriptionText.text = Upgrade_2.Description;
+        else if(button3.isOn == true) DescriptionText.text = Upgrade_3.Description;
+        else if(button3.isOn == true) DescriptionText.text = Upgrade_4.Description;
+        else DescriptionText.text = "";
+
     }
 
     public void ButtonsSet(){
