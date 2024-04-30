@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Buttons : MonoBehaviour{
+
+public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     [SerializeField] private WonkasFactory upgradesScript;
     [SerializeField] private Text upgradeDescriptionText;
     public bool isOn;
@@ -14,16 +16,11 @@ public class Buttons : MonoBehaviour{
         upgradesScript.UpgradeChosen(upgradeChosen);
     }
 
-    public void OnMouseOver(){
-        isOn = true;
+    public void OnPointerEnter(PointerEventData eventData){
+        isOn = true;  
     }
 
-    public void OnMouseExit(){
-        isOn = false;
-    }
-    
-    void Update(){
-        if(isOn == true)Debug.Log("Mouse is over GameObject.");
-        else Debug.Log("Mouse is no longer on GameObject.");
+    public void OnPointerExit(PointerEventData eventData){
+        isOn = false;  
     }
 }
