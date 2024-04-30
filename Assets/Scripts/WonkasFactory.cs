@@ -70,7 +70,10 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Image topFactory;
     [SerializeField] private Image GumStock;
     [SerializeField] private Image GobstopperStock;
-
+    [SerializeField] private Image oompa1;
+    [SerializeField] private Image oompa2;
+    [SerializeField] private Image oompa3;
+    [SerializeField] private Image oompa4;
     [SerializeField] private GameObject oompaLoompa;
 
     [SerializeField] private Buttons button1;
@@ -113,6 +116,12 @@ public class WonkasFactory : MonoBehaviour{
         topFactory.enabled = false;
         GumStock.enabled = false;
         GobstopperStock.enabled = false;
+
+        oompa1.enabled = false;
+        oompa2.enabled = false;
+        oompa3.enabled = false;
+        oompa4.enabled = false;
+
         gumAvailable = false;
         gobAvailable = false;
         oompaLoompa.SetActive(false);
@@ -437,10 +446,24 @@ public class WonkasFactory : MonoBehaviour{
 
     public void OompaBuy(){
         if(money >= 15f){
-        money -= 15f;
-        upgrades += 1000f;
-        oompaQuantity += 1;
+        money -= 15f; // alterar preco
+        stockSaleSpeed += 0.01f; // a alterar para speed de producao
+        oompaQuantity += 1; 
         upgradeSound.Play();
+        }
+
+// Surgir Oompa Loompas nas janelas
+        if(oompaQuantity == 1){
+            oompa1.enabled = true;
+        }
+        else if (oompaQuantity == 2) {
+            oompa2.enabled = true;
+        }
+        else if (oompaQuantity == 3) {
+            oompa3.enabled = true;
+        }
+        else if (oompaQuantity == 4) {
+            oompa4.enabled = true;
         }
     }
 
