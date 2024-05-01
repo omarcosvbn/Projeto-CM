@@ -70,10 +70,40 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Image topFactory;
     [SerializeField] private Image GumStock;
     [SerializeField] private Image GobstopperStock;
+
+
+    //Imagens para os Oompa Loompas das janelas
     [SerializeField] private Image oompa1;
     [SerializeField] private Image oompa2;
     [SerializeField] private Image oompa3;
     [SerializeField] private Image oompa4;
+    [SerializeField] private Image oompa5;
+    [SerializeField] private Image oompa6;
+    [SerializeField] private Image oompa7;
+    [SerializeField] private Image oompa8;
+    [SerializeField] private Image oompa9;
+    [SerializeField] private Image oompa10;
+    [SerializeField] private Image oompa11;
+    [SerializeField] private Image oompa12;
+    [SerializeField] private Image oompa13;
+    [SerializeField] private Image oompa14;
+    [SerializeField] private Image oompa15;
+    [SerializeField] private Image oompa16;
+    [SerializeField] private Image oompa17;
+    [SerializeField] private Image oompa18;
+    [SerializeField] private Image oompa19;
+    [SerializeField] private Image oompa20;
+    [SerializeField] private Image oompa21;
+    [SerializeField] private Image oompa22;
+    [SerializeField] private Image oompa23;
+    [SerializeField] private Image oompa24;
+    [SerializeField] private Image oompa25;
+    [SerializeField] private Image oompa26;
+    [SerializeField] private Image oompa27;
+    [SerializeField] private Image oompa28;
+    [SerializeField] private Image oompa29;
+
+
     [SerializeField] private GameObject oompaLoompa;
 
     [SerializeField] private Buttons button1;
@@ -121,6 +151,33 @@ public class WonkasFactory : MonoBehaviour{
         oompa2.enabled = false;
         oompa3.enabled = false;
         oompa4.enabled = false;
+        oompa5.enabled = false;
+        oompa6.enabled = false;
+        oompa7.enabled = false;
+        oompa8.enabled = false;
+        oompa9.enabled = false;
+        oompa10.enabled = false;
+        oompa11.enabled = false;
+        oompa12.enabled = false;
+        oompa13.enabled = false;
+        oompa14.enabled = false;
+        oompa15.enabled = false;
+        oompa16.enabled = false;
+        oompa17.enabled = false;
+        oompa18.enabled = false;
+        oompa19.enabled = false;
+        oompa20.enabled = false;
+        oompa21.enabled = false;
+        oompa22.enabled = false;
+        oompa23.enabled = false;
+        oompa24.enabled = false;
+        oompa25.enabled = false;
+        oompa26.enabled = false;
+        oompa27.enabled = false;
+        oompa28.enabled = false;
+        oompa29.enabled = false;
+
+
 
         gumAvailable = false;
         gobAvailable = false;
@@ -445,14 +502,16 @@ public class WonkasFactory : MonoBehaviour{
     }
 
     public void OompaBuy(){
+      //for(oompaQuantity < 4){
         if(money >= 15f){
-        money -= 15f; // alterar preco
-        stockSaleSpeed += 0.01f; // a alterar para speed de producao
-        oompaQuantity += 1; 
-        upgradeSound.Play();
+                money -= 15f; // alterar preco
+                stockSaleSpeed += 0.01f; // a alterar para speed de producao
+                oompaQuantity += 1; 
+                upgradeSound.Play();
         }
+   // }
 
-// Surgir Oompa Loompas nas janelas
+        // Surgir Oompa Loompas nas janelas
         if(oompaQuantity == 1){
             oompa1.enabled = true;
         }
@@ -464,7 +523,83 @@ public class WonkasFactory : MonoBehaviour{
         }
         else if (oompaQuantity == 4) {
             oompa4.enabled = true;
+        }   
+        else if (oompaQuantity == 5) {
+            oompa5.enabled = true;
         }
+        else if (oompaQuantity == 6) {
+            oompa6.enabled = true;
+        }  
+        else if (oompaQuantity == 7) {
+            oompa7.enabled = true;
+        }
+        else if (oompaQuantity == 8) {
+            oompa8.enabled = true;
+        }
+        else if (oompaQuantity == 9) {
+            oompa9.enabled = true;
+        }
+        else if (oompaQuantity == 10) {
+            oompa10.enabled = true;
+        }
+        else if (oompaQuantity == 11) {
+            oompa11.enabled = true;
+        }
+        else if (oompaQuantity == 12) {
+            oompa12.enabled = true;
+        }
+        else if (oompaQuantity == 13) {
+            oompa13.enabled = true;
+        }
+        else if (oompaQuantity == 14) {
+            oompa14.enabled = true;
+        }
+        else if (oompaQuantity == 15) {
+            oompa15.enabled = true;
+        }
+        else if (oompaQuantity == 16) {
+            oompa16.enabled = true;
+        }
+        else if (oompaQuantity == 17) {
+            oompa17.enabled = true;
+        }
+        else if (oompaQuantity == 18) {
+            oompa18.enabled = true;
+        }
+        else if (oompaQuantity == 19) {
+            oompa19.enabled = true;
+        }
+        else if (oompaQuantity == 20) {
+            oompa20.enabled = true;
+        }
+        else if (oompaQuantity == 21) {
+            oompa21.enabled = true;
+        }
+        else if (oompaQuantity == 22) {
+            oompa22.enabled = true;
+        }
+        else if (oompaQuantity == 23) {
+            oompa23.enabled = true;
+        }     
+        else if (oompaQuantity == 24) {
+            oompa24.enabled = true;
+        }
+        else if (oompaQuantity == 25) {
+            oompa25.enabled = true;
+        }
+        else if (oompaQuantity == 26) {
+            oompa26.enabled = true;
+        }  
+        else if (oompaQuantity == 27) {
+            oompa27.enabled = true;
+        }  
+        else if (oompaQuantity == 28) {
+            oompa28.enabled = true;
+        }  
+        else if (oompaQuantity == 29) {
+            oompa29.enabled = true;
+        }
+   
     }
 
 
