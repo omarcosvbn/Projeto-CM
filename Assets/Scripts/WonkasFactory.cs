@@ -133,6 +133,9 @@ public class WonkasFactory : MonoBehaviour{
     private float gobStockTimer = 0f;
     private float gobStockUpdateInterval = 5f; // Update stock every x seconds
 
+    private float stockProductionSpeed = 1f;
+
+
 
     public void Start(){
         upgrades = 1;
@@ -189,21 +192,21 @@ public class WonkasFactory : MonoBehaviour{
     public void Update(){
         moneyText.text = "Money: " + money.ToString("F2");
 
-        chocStockTimer += Time.deltaTime;
+        chocStockTimer += stockProductionSpeed * Time.deltaTime;
         if (chocStockTimer >= chocStockUpdateInterval) {
             chocStock += 1;
             chocStockText.text = chocStock.ToString();
             chocStockTimer = 0f;
         }
 
-        gumStockTimer += Time.deltaTime;
+        gumStockTimer += stockProductionSpeed * Time.deltaTime;
         if (gumStockTimer >= gumStockUpdateInterval && gumAvailable == true) {
             gumStock += 1;
             gumStockText.text = gumStock.ToString();
             gumStockTimer = 0f;
         }
 
-        gobStockTimer += Time.deltaTime;
+        gobStockTimer += stockProductionSpeed * Time.deltaTime;
         if (gobStockTimer >= gobStockUpdateInterval && gobAvailable == true) {
             gobStock += 1;
             gobStockText.text = gobStock.ToString();
@@ -264,10 +267,10 @@ public class WonkasFactory : MonoBehaviour{
 
 
         // Replacing the X with increase value
-        Upgrade_DescriptionText1.text = Upgrade_1.Name;
-        Upgrade_DescriptionText2.text = Upgrade_2.Name;
-        Upgrade_DescriptionText3.text = Upgrade_3.Name;
-        Upgrade_DescriptionText4.text = Upgrade_4.Name;
+        //Upgrade_DescriptionText1.text = Upgrade_1.Name;
+       // Upgrade_DescriptionText2.text = Upgrade_2.Name;
+        //Upgrade_DescriptionText3.text = Upgrade_3.Name;
+       // Upgrade_DescriptionText4.text = Upgrade_4.Name;
     }
 
     public void RemoveUpgrade(string upgradeName){
@@ -505,7 +508,7 @@ public class WonkasFactory : MonoBehaviour{
       //for(oompaQuantity < 4){
         if(money >= 15f){
                 money -= 15f; // alterar preco
-                stockSaleSpeed += 0.01f; // a alterar para speed de producao
+                stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
                 oompaQuantity += 1; 
                 upgradeSound.Play();
         }
