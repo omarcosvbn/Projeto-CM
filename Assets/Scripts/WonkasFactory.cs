@@ -49,10 +49,10 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Button Upgrade_button3;
     [SerializeField] private Button Upgrade_button4;
 
-    [SerializeField] private Text Upgrade_DescriptionText1;
-    [SerializeField] private Text Upgrade_DescriptionText2;
-    [SerializeField] private Text Upgrade_DescriptionText3;
-    [SerializeField] private Text Upgrade_DescriptionText4;
+   // [SerializeField] private Text Upgrade_DescriptionText1;
+    //[SerializeField] private Text Upgrade_DescriptionText2;
+    //[SerializeField] private Text Upgrade_DescriptionText3;
+    //[SerializeField] private Text Upgrade_DescriptionText4;
 
     [SerializeField] private Text DescriptionText;
 
@@ -111,6 +111,8 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Buttons button3;
     [SerializeField] private Buttons button4;
 
+    [SerializeField] private Text BoostText;
+
 
     private double money;
     private float stockSaleSpeed = 0.02f;
@@ -134,6 +136,7 @@ public class WonkasFactory : MonoBehaviour{
     private float gobStockUpdateInterval = 5f; // Update stock every x seconds
 
     private float stockProductionSpeed = 1f;
+
 
 
 
@@ -239,11 +242,22 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
-        if(button1.isOn == true) DescriptionText.text = Upgrade_1.Description;
-        else if(button2.isOn == true) DescriptionText.text = Upgrade_2.Description;
-        else if(button3.isOn == true) DescriptionText.text = Upgrade_3.Description;
-        else if(button4.isOn == true) DescriptionText.text = Upgrade_4.Description;
-        else DescriptionText.text = "";
+        if(button1.isOn == true) {
+            DescriptionText.text = Upgrade_1.Description;
+            BoostText.text = Upgrade_1.Boost;
+        }else if(button2.isOn == true){
+            DescriptionText.text = Upgrade_2.Description;
+            BoostText.text = Upgrade_2.Boost;
+        }else if(button3.isOn == true){
+            DescriptionText.text = Upgrade_3.Description;
+            BoostText.text = Upgrade_3.Boost;
+        }else if(button4.isOn == true){
+            DescriptionText.text = Upgrade_4.Description;
+            BoostText.text = Upgrade_4.Boost;
+        }else{
+            DescriptionText.text = "";
+            BoostText.text = "";
+        }
 
     }
 
