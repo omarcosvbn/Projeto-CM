@@ -47,8 +47,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Button Upgrade_button1;
     [SerializeField] private Button Upgrade_button2;
     [SerializeField] private Button Upgrade_button3;
-    [SerializeField] private Button Upgrade_button4;
-
+    //[SerializeField] private Button Upgrade_button4;
    // [SerializeField] private Text Upgrade_DescriptionText1;
     //[SerializeField] private Text Upgrade_DescriptionText2;
     //[SerializeField] private Text Upgrade_DescriptionText3;
@@ -109,7 +108,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Buttons button1;
     [SerializeField] private Buttons button2;
     [SerializeField] private Buttons button3;
-    [SerializeField] private Buttons button4;
+   // [SerializeField] private Buttons button4;
 
     [SerializeField] private Text BoostText;
 
@@ -146,7 +145,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 1000;
+        money = 0;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
@@ -182,7 +181,6 @@ public class WonkasFactory : MonoBehaviour{
         oompa27.enabled = false;
         oompa28.enabled = false;
         oompa29.enabled = false;
-
 
 
         gumAvailable = false;
@@ -240,7 +238,7 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
-        Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
+      //  Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         if(button1.isOn == true) {
             DescriptionText.text = Upgrade_1.Description;
@@ -251,9 +249,9 @@ public class WonkasFactory : MonoBehaviour{
         }else if(button3.isOn == true){
             DescriptionText.text = Upgrade_3.Description;
             BoostText.text = Upgrade_3.Boost;
-        }else if(button4.isOn == true){
-            DescriptionText.text = Upgrade_4.Description;
-            BoostText.text = Upgrade_4.Boost;
+        //}else if(button4.isOn == true){
+           // DescriptionText.text = Upgrade_4.Description;
+          //  BoostText.text = Upgrade_4.Boost;
         }else{
             DescriptionText.text = "";
             BoostText.text = "";
@@ -271,20 +269,20 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
-        Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
+        //Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         // Setting text
         Upgrade_button1.transform.GetChild(0).GetComponent<Text>().text = Upgrade_1.Name;
         Upgrade_button2.transform.GetChild(0).GetComponent<Text>().text = Upgrade_2.Name;
         Upgrade_button3.transform.GetChild(0).GetComponent<Text>().text = Upgrade_3.Name;
-        Upgrade_button4.transform.GetChild(0).GetComponent<Text>().text = Upgrade_4.Name;
+        //Upgrade_button4.transform.GetChild(0).GetComponent<Text>().text = Upgrade_4.Name;
 
 
         // Replacing the X with increase value
         //Upgrade_DescriptionText1.text = Upgrade_1.Name;
-       // Upgrade_DescriptionText2.text = Upgrade_2.Name;
+        //Upgrade_DescriptionText2.text = Upgrade_2.Name;
         //Upgrade_DescriptionText3.text = Upgrade_3.Name;
-       // Upgrade_DescriptionText4.text = Upgrade_4.Name;
+        //Upgrade_DescriptionText4.text = Upgrade_4.Name;
     }
 
     public void RemoveUpgrade(string upgradeName){
@@ -519,14 +517,35 @@ public class WonkasFactory : MonoBehaviour{
     }
 
     public void OompaBuy(){
-      //for(oompaQuantity < 4){
+    if (rightFactory.enabled == false && oompaQuantity < 4){
+        if(money >= 1f){
+                money -= 1f; // alterar preco
+                stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
+                oompaQuantity += 1; 
+                upgradeSound.Play();
+        }
+    }else if (rightFactory.enabled == true && oompaQuantity < 16){
+        if(money >= 5f){
+                money -= 5f; // alterar preco
+                stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
+                oompaQuantity += 1; 
+                upgradeSound.Play();
+        }
+    }else if (topFactory.enabled == true && oompaQuantity < 19){
+        if(money >= 10f){
+                money -= 10f; // alterar preco
+                stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
+                oompaQuantity += 1; 
+                upgradeSound.Play();
+        }
+    }else if (leftFactory.enabled == true && oompaQuantity < 29){
         if(money >= 15f){
                 money -= 15f; // alterar preco
                 stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
                 oompaQuantity += 1; 
                 upgradeSound.Play();
         }
-   // }
+    }
 
         // Surgir Oompa Loompas nas janelas
         if(oompaQuantity == 1){
