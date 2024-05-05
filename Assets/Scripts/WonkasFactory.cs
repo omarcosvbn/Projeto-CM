@@ -10,35 +10,35 @@ public class WonkasFactory : MonoBehaviour{
     // DEFINE LIST WITH UPGRADES
     Upgrade[] _Upgrades = new Upgrade[]{
         //Chocolate upgrades
-        new Upgrade {Name = "More cacao pods", Description = "You invest in transportation to get more cacao pods to your factory.", Boost= "Chocolate production + 50%", Cost="1", Order = 1},
-        new Upgrade {Name = "Bigger roasters", Description = "More chocolate can be roasted simultaneously.", Boost= "Chocolate production + 50%", Cost="1", Order = 2},
-        new Upgrade {Name = "Chocolate Tempering Machine", Description = "Install advanced machines for faster and more precise chocolate tempering, resulting in better quality chocolate", Boost= "Chocolate production + 50%", Cost="1", Order = 3},
-        new Upgrade {Name = "Extra Sugar", Description = "People became more addicted to your chocolate", Boost= "Sales +100%", Cost="1", Order = 4},
-        new Upgrade {Name = "Oompa Loompas", Description = "You take a trip to Loompaland and invite its inhabitants to work at your factory in exchange for cocoa beans.", Boost= "Unlocks Oompa Loompas", Cost="1", Order = 5},
-        new Upgrade {Name = "Chocolate Tasting Room", Description = "Create a luxurious tasting room where visitors can sample a variety of chocolate creations.", Boost= "Sales +50%", Cost="1", Order = 6},
+        new Upgrade {Name = "More cacao pods", Description = "You invest in transportation to get more cacao pods to your factory.", Boost= "Chocolate production +50%", Cost="1$", Order = 1},
+        new Upgrade {Name = "Bigger roasters", Description = "More chocolate can be roasted simultaneously.", Boost= "Chocolate production +50%", Cost="1$", Order = 2},
+        new Upgrade {Name = "Chocolate Tempering Machine", Description = "Install advanced machines for faster and more precise chocolate tempering, resulting in better quality chocolate", Boost= "Chocolate production +200%", Cost="1$", Order = 3},
+        new Upgrade {Name = "Extra Sugar", Description = "People became more addicted to your chocolate", Boost= "Sales +50%", Cost="1$", Order = 4},
+        new Upgrade {Name = "Oompa Loompas", Description = "You take a trip to Loompaland and invite its inhabitants to work at your factory in exchange for cocoa beans.", Boost= "Unlocks Oompa Loompas", Cost="1$", Order = 5},
+        new Upgrade {Name = "Chocolate Tasting Room", Description = "Create a luxurious tasting room where visitors can sample a variety of chocolate creations.", Boost= "Sales +25%", Cost="1$", Order = 6},
        
         //Bubblegum upgrades
-        new Upgrade {Name = "Bubblegum", Description = "You want create more than just chocolate. How about bubblegum?", Boost= "New factory sector", Cost="1", Order = 7},
-        new Upgrade {Name = "New flavor - Breakfast", Description = "You have had a ground-breaking idea. A meal flavored Bubblegum.", Boost= "Bubblegum production +33.33%", Cost="1", Order = 8},
-        new Upgrade {Name = "New flavor - Lunch", Description = "Take your previous idea to the next level by creating another meal based flavor.", Boost= "Bubblegum production +33.33%", Cost="1", Order = 9},
-        new Upgrade {Name = "New flavor - Dinner", Description = "Since you have created breakfast and lunch flavored gum, might as well finish it off with a dinner flavored one", Boost= "Bubblegum production +33.33%", Cost="1", Order = 10},
-        new Upgrade {Name = "OompaLoompa Housing", Description = "With a new place to rest, the Oompa Loompas become more productive", Boost= "New factory sector", Cost="1", Order = 11},
-        new Upgrade {Name = "3-Course's Dinner Gum", Description = "A final, more sophisticated version of the dinner flavor. WARNING: unexpected side effects may occur upon consumption", Boost= "Bubblegum production +100%", Cost="1", Order = 12},
+        new Upgrade {Name = "Bubblegum", Description = "You want create more than just chocolate. How about bubblegum?", Boost= "New factory sector", Cost="1$", Order = 7},
+        new Upgrade {Name = "New flavor - Breakfast", Description = "You have a ground-breaking idea. A meal flavored Bubblegum.", Boost= "Bubblegum production +33.33%", Cost="1$", Order = 8},
+        new Upgrade {Name = "New flavor - Lunch", Description = "Take your previous idea to the next level by creating another meal based flavor.", Boost= "Bubblegum production +33.33%", Cost="1$", Order = 9},
+        new Upgrade {Name = "New flavor - Dinner", Description = "Since you have created breakfast and lunch flavored gum, might as well finish it off with a dinner flavored one", Boost= "Bubblegum production +33.33%", Cost="1$", Order = 10},
+        new Upgrade {Name = "OompaLoompa Housing", Description = "With a new place to rest, the Oompa Loompas become more productive", Boost= "New factory sector with faster production", Cost="1$", Order = 11},
+        new Upgrade {Name = "3-Course's Dinner Gum", Description = "A final, more sophisticated version of the dinner flavor. WARNING: unexpected side effects may occur upon consumption", Boost= "Bubblegum production +100%; Sales +200%", Cost="1$", Order = 12},
         
         //Gobstopper upgrades
-        new Upgrade {Name = "Gobstoppers", Description = "You need more variety of sweets to appeal to more people. How about something that lasts in your mouth but you do not need to chew?", Boost= "New factory sector", Cost="1", Order = 13},
-        new Upgrade {Name = "New flavors", Description = "You create new flavors of Godstoppers", Boost= "Sales +100%", Cost="1", Order = 14},
-        new Upgrade {Name = "A variety of flavors, One Gobstopper", Description = "What if you combine all of the flavors created into one single gobstopper?", Boost= "Sales 1000%", Cost="1", Order = 15},
-        new Upgrade {Name = "New recipe - Longer lasting", Description = "People like your Gobstoppers so much they are asking for longer lasting ones! Create a new recipe for them to last longer.", Boost= "Gobstoppers production +50%", Cost="1", Order = 16},
-        new Upgrade {Name = "Experimenting phase", Description = "Before you reveal your new product, you must test it to see if it holds up to the expectations. Build a machine to shoot them into a pool of water to test how long they last.", Boost= "Gobstoppers production +50%", Cost="1", Order = 17},
-        new Upgrade {Name = "24h Gobstoppers!", Description = "Your Gobstoppers surpass expectations! Each one lasts a total of 24h in water. Is it possible to create a Gobstopper that lasts forever?", Boost= "Sales +100%", Cost="1", Order = 18},
-        new Upgrade {Name = "Everlasting Gobstoppers", Description = "These new Gobstoppers are meant for children who are given very little allowance money. You can suck on them all year and they will never get any smaller.", Boost= "Sales +100%", Cost="1", Order = 19},
+        new Upgrade {Name = "Gobstoppers", Description = "You need more variety of sweets to appeal to more people. How about something that lasts in your mouth but you do not need to chew?", Boost= "New factory sector", Cost="1$", Order = 13},
+        new Upgrade {Name = "New flavors", Description = "You create new flavors of Godstoppers", Boost= "Sales +50%", Cost="1$", Order = 14},
+        new Upgrade {Name = "A variety of flavors, One Gobstopper", Description = "What if you combine all of the flavors created into one single gobstopper?", Boost= "Gobstopper Production +50%", Cost="1$", Order = 15},
+        new Upgrade {Name = "New recipe - Longer lasting", Description = "People like your Gobstoppers so much they are asking for longer lasting ones! Create a new recipe for them to last longer.", Boost= "Gobstoppers production +150%", Cost="1$", Order = 16},
+        new Upgrade {Name = "Experimenting phase", Description = "Before you reveal your new product, you must test it to see if it holds up to the expectations. Build a machine to shoot them into a pool of water to test how long they last.", Boost= "Gobstoppers production +50%", Cost="1$", Order = 17},
+        new Upgrade {Name = "24h Gobstoppers!", Description = "Your Gobstoppers surpass expectations! Each one lasts a total of 24h in water. Is it possible to create a Gobstopper that lasts forever?", Boost= "Sales +50%", Cost="1$", Order = 18},
+        new Upgrade {Name = "Everlasting Gobstoppers", Description = "These new Gobstoppers are meant for children who are given very little allowance money. You can suck on them all year and they will never get any smaller.", Boost= "Sales +500%", Cost="1$", Order = 19},
 
 
         //Oompa Loompa upgrades
-        new Upgrade {Name = "Oompa Loompa Wellness program", Description = "Implement a wellness program to ensure the health and happiness of your workers", Boost= "Less energy drained from Ommpa Loompa", Cost="1", Order = 20},
-        new Upgrade {Name = "Oompa Loompa Eficiency Training", Description = "Boost production speed with better-trained Oompa Loompas", Boost= "Production Speed +100", Cost="1", Order = 21},
-        new Upgrade {Name = "Oompa Loompa Retirement plan", Description = "Implement a retirement plan for aging Oompa Loompas to boost morale", Boost= "Production Speed +100", Cost="1", Order = 22},
+        new Upgrade {Name = "Oompa Loompa Wellness program", Description = "Implement a wellness program to ensure the health and happiness of your workers", Boost= "Production Speed +50%", Cost="1$", Order = 20},
+        new Upgrade {Name = "Oompa Loompa Eficiency Training", Description = "Boost production speed with better-trained Oompa Loompas", Boost= "Production Speed +50%", Cost="1$", Order = 21},
+        new Upgrade {Name = "Oompa Loompa Retirement plan", Description = "Implement a retirement plan for aging Oompa Loompas to boost morale", Boost= "Production Speed +50%", Cost="1$", Order = 22},
         
 
         new Upgrade {Name = "", Description = "", Boost= "", Cost="", Order = 100}
@@ -136,10 +136,10 @@ public class WonkasFactory : MonoBehaviour{
 
     private float gobStockTimer = 0f;
     private float gobStockUpdateInterval = 5f; // Update stock every x seconds
-
     private float stockProductionSpeed = 1f;
-
-
+    private float chocolateProductionSpeed = 1f;
+    private float gumProductionSpeed = 1f;
+    private float gobStopperProductionSpeed = 1f;
 
 
     public void Start(){
@@ -197,21 +197,21 @@ public class WonkasFactory : MonoBehaviour{
     public void Update(){
         moneyText.text = "Money: " + money.ToString("F2");
 
-        chocStockTimer += stockProductionSpeed * Time.deltaTime;
+        chocStockTimer += stockProductionSpeed * chocolateProductionSpeed * Time.deltaTime;
         if (chocStockTimer >= chocStockUpdateInterval) {
             chocStock += 1;
             chocStockText.text = chocStock.ToString();
             chocStockTimer = 0f;
         }
 
-        gumStockTimer += stockProductionSpeed * Time.deltaTime;
+        gumStockTimer += stockProductionSpeed * gumProductionSpeed * Time.deltaTime;
         if (gumStockTimer >= gumStockUpdateInterval && gumAvailable == true) {
             gumStock += 1;
             gumStockText.text = gumStock.ToString();
             gumStockTimer = 0f;
         }
 
-        gobStockTimer += stockProductionSpeed * Time.deltaTime;
+        gobStockTimer += stockProductionSpeed * gobStopperProductionSpeed * Time.deltaTime;
         if (gobStockTimer >= gobStockUpdateInterval && gobAvailable == true) {
             gobStock += 1;
             gobStockText.text = gobStock.ToString();
@@ -345,7 +345,7 @@ public class WonkasFactory : MonoBehaviour{
         if (upgradeChosen == "More cacao pods"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                chocolateProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("More cacao pods");
             }
@@ -354,8 +354,8 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Bigger roasters"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
                 upgradeSound.Play();
+                chocolateProductionSpeed += 0.5f;
                 RemoveUpgrade("Bigger roasters");
             }
             Debug.Log("Bigger roasters");
@@ -363,7 +363,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Chocolate Tempering Machine"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                chocolateProductionSpeed += 2f;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
             }
@@ -372,7 +372,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Extra Sugar"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("Extra Sugar");
             }
@@ -381,7 +381,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Oompa Loompas"){
             if(money >= 15f){
                 money -= 15f;
-                stockSaleSpeed += 0.01f;
+                stockProductionSpeed += 0.1f;
                 upgradeSound.Play();
                 oompaLoompa.SetActive(true);
                 RemoveUpgrade("Oompa Loompas");
@@ -391,7 +391,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Chocolate Tasting Room"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockSaleSpeed *= 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tasting Room");
             }
@@ -400,7 +400,6 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Bubblegum"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
                 upgradeSound.Play();
                 rightFactory.enabled = true;
                 GumStock.enabled = true;
@@ -412,7 +411,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "New flavor - Breakfast"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Breakfast");
             }
@@ -421,7 +420,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "New flavor - Lunch"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Lunch");
             }
@@ -430,7 +429,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "New flavor - Dinner"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Dinner");
             }
@@ -439,7 +438,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "OompaLoompa Housing"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockProductionSpeed += 0.3f;
                 upgradeSound.Play();
                 topFactory.enabled = true;
                 RemoveUpgrade("OompaLoompa Housing");
@@ -449,7 +448,8 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "3-Course's Dinner Gum"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gumProductionSpeed += 1f;
+                stockSaleSpeed *= 4f;
                 upgradeSound.Play();
                 RemoveUpgrade("3-Course's Dinner Gum");
             }
@@ -458,7 +458,6 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Gobstoppers"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
                 upgradeSound.Play();
                 leftFactory.enabled = true;
                 GobstopperStock.enabled = true;
@@ -470,7 +469,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "New flavors"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavors");
             }
@@ -479,7 +478,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "A variety of flavors, One Gobstopper"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gobStopperProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("A variety of flavors, One Gobstopper");
             }
@@ -488,7 +487,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "New recipe - Longer lasting"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gobStopperProductionSpeed += 1.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("New recipe - Longer lasting");
             }
@@ -497,7 +496,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Experimenting phase"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                gobStopperProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Experimenting phase");
             }
@@ -506,7 +505,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "24h Gobstoppers!"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("24h Gobstoppers!");
             }
@@ -515,7 +514,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Everlasting Gobstoppers"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockSaleSpeed *= 5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Everlasting Gobstoppers");
             }
@@ -524,7 +523,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Oompa Loompa Wellness program"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Wellness program");
             }
@@ -533,7 +532,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Oompa Loompa Eficiency Training"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Eficiency Training");
             }
@@ -542,7 +541,7 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Oompa Loompa Retirement plan"){
             if(money >= 15f){
                 money -= 15f;
-                upgrades += 1000f;
+                stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Retirement plan");
             }
