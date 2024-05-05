@@ -116,9 +116,9 @@ public class WonkasFactory : MonoBehaviour{
     private double money;
     private float stockSaleSpeed = 0.02f;
     private float upgrades;
-    private int chocStock;
-    private int gumStock;
-    private int gobStock;
+    public int chocStock;
+    public int gumStock;
+    public int gobStock;
     private int oompaQuantity;
     private float oompaGrade;
     private bool gumAvailable;
@@ -145,7 +145,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 0;
+        money = 1000;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;

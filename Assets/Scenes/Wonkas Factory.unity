@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 169882899}
   - component: {fileID: 169882901}
   - component: {fileID: 169882900}
+  - component: {fileID: 169882902}
   m_Layer: 5
   m_Name: Gobstopper
   m_TagString: Untagged
@@ -236,6 +237,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169882898}
   m_CullTransparentMesh: 1
+--- !u!114 &169882902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169882898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad0c34076559ee4a9fca4b580c9d56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesScript: {fileID: 1173398776}
+  button: {fileID: 169882898}
+  chocStockText: {fileID: 345647318}
+  gumStockText: {fileID: 203854152}
+  gobStockText: {fileID: 1670845314}
 --- !u!1 &200978866
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +265,7 @@ GameObject:
   - component: {fileID: 200978867}
   - component: {fileID: 200978869}
   - component: {fileID: 200978868}
+  - component: {fileID: 200978870}
   m_Layer: 5
   m_Name: Gum
   m_TagString: Untagged
@@ -312,6 +331,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200978866}
   m_CullTransparentMesh: 1
+--- !u!114 &200978870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200978866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad0c34076559ee4a9fca4b580c9d56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesScript: {fileID: 1173398776}
+  button: {fileID: 200978866}
+  chocStockText: {fileID: 345647318}
+  gumStockText: {fileID: 203854152}
+  gobStockText: {fileID: 1670845314}
 --- !u!1 &203854150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,6 +2148,9 @@ MonoBehaviour:
   button2: {fileID: 1087354368}
   button3: {fileID: 1589988470}
   BoostText: {fileID: 1137405279}
+  chocStock: 0
+  gumStock: 0
+  gobStock: 0
 --- !u!1 &1185453280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2680,7 @@ GameObject:
   - component: {fileID: 1344976991}
   - component: {fileID: 1344976993}
   - component: {fileID: 1344976992}
+  - component: {fileID: 1344976994}
   m_Layer: 5
   m_Name: Chocolate
   m_TagString: Untagged
@@ -2706,6 +2746,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344976990}
   m_CullTransparentMesh: 1
+--- !u!114 &1344976994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344976990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad0c34076559ee4a9fca4b580c9d56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesScript: {fileID: 1173398776}
+  button: {fileID: 1344976990}
+  chocStockText: {fileID: 345647318}
+  gumStockText: {fileID: 203854152}
+  gobStockText: {fileID: 1670845314}
 --- !u!1 &1364869326
 GameObject:
   m_ObjectHideFlags: 0
