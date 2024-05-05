@@ -61,6 +61,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text gumStockText;
     [SerializeField] private Text gobStockText;
     [SerializeField] private Text Oompas;
+    [SerializeField] public Text warning;
 
     [SerializeField] private AudioSource upgradeSound;
     [SerializeField] private AudioSource oompaVoice;
@@ -153,6 +154,7 @@ public class WonkasFactory : MonoBehaviour{
         topFactory.enabled = false;
         GumStock.enabled = false;
         GobstopperStock.enabled = false;
+        warning.enabled = false;
 
         oompa1.enabled = false;
         oompa2.enabled = false;
@@ -264,6 +266,31 @@ public class WonkasFactory : MonoBehaviour{
             CostText.text = "";
         }
 
+    if (rightFactory.enabled == false && oompaQuantity < 4){
+            warning.enabled = false;
+    }  
+    else if (rightFactory.enabled == false && oompaQuantity >= 4){
+            warning.enabled = true;
+    }
+    else if (rightFactory.enabled == true && oompaQuantity < 16){
+            warning.enabled = false;
+    }    
+    else if (rightFactory.enabled == true && topFactory.enabled == false && oompaQuantity >= 16){
+            warning.enabled = true;
+    }
+    else if (topFactory.enabled == true && oompaQuantity < 19){
+            warning.enabled = false;
+    }   
+    else if (topFactory.enabled == true && leftFactory.enabled == false && oompaQuantity >= 19){
+            warning.enabled = true;
+    }  
+    else if (leftFactory.enabled == true && oompaQuantity < 29){
+            warning.enabled = false;
+    } 
+    else if (leftFactory.enabled == true && oompaQuantity >= 29){
+            warning.enabled = true;
+            warning.text = "Maximum number of Oompa Loompas reached";
+    }   
     }
 
     public void ButtonsSet(){
@@ -531,21 +558,24 @@ public class WonkasFactory : MonoBehaviour{
                 oompaQuantity += 1; 
                 oompaVoice.Play();
         }
-    }else if (rightFactory.enabled == true && oompaQuantity < 16){
+    }
+    else if (rightFactory.enabled == true && oompaQuantity < 16){
         if(money >= 5f){
                 money -= 5f; // alterar preco
                 stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
                 oompaQuantity += 1; 
                 oompaVoice.Play();
         }
-    }else if (topFactory.enabled == true && oompaQuantity < 19){
+    }
+    else if (topFactory.enabled == true && oompaQuantity < 19){
         if(money >= 10f){
                 money -= 10f; // alterar preco
                 stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
                 oompaQuantity += 1; 
                 oompaVoice.Play();
         }
-    }else if (leftFactory.enabled == true && oompaQuantity < 29){
+    }
+    else if (leftFactory.enabled == true && oompaQuantity < 29){
         if(money >= 15f){
                 money -= 15f; // alterar preco
                 stockProductionSpeed += 0.2f; //cada oompa loompa acelera a velocidade de producao
