@@ -148,7 +148,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 1000;
+        money = 0;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
@@ -343,8 +343,8 @@ public class WonkasFactory : MonoBehaviour{
      // UPGRADES
     public void UpgradeChosen(string upgradeChosen){
         if (upgradeChosen == "More cacao pods"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 50f){
+                money -= 50f;
                 chocolateProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("More cacao pods");
@@ -352,8 +352,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("More cacao pods");
         }
         else if (upgradeChosen == "Bigger roasters"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 450f){
+                money -= 450f;
                 upgradeSound.Play();
                 chocolateProductionSpeed += 0.5f;
                 RemoveUpgrade("Bigger roasters");
@@ -361,8 +361,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Bigger roasters");
         }
         else if (upgradeChosen == "Chocolate Tempering Machine"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 200f){
+                money -= 200f;
                 chocolateProductionSpeed += 2f;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
@@ -370,8 +370,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Chocolate Tempering Machine");
         }
         else if (upgradeChosen == "Extra Sugar"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 100f){
+                money -= 100f;
                 stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("Extra Sugar");
@@ -379,8 +379,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Extra Sugar");
         }
         else if (upgradeChosen == "Oompa Loompas"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 300f){
+                money -= 300f;
                 stockProductionSpeed += 0.1f;
                 upgradeSound.Play();
                 oompaLoompa.SetActive(true);
@@ -389,8 +389,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Oompa Loompas");
         }
         else if (upgradeChosen == "Chocolate Tasting Room"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 1000f){
+                money -= 1000f;
                 stockSaleSpeed *= 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tasting Room");
@@ -398,8 +398,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Chocolate Tasting Room");
         }
         else if (upgradeChosen == "Bubblegum"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 20000f){
+                money -= 20000f;
                 upgradeSound.Play();
                 rightFactory.enabled = true;
                 GumStock.enabled = true;
@@ -409,8 +409,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Bubblegum");
         }
         else if (upgradeChosen == "New flavor - Breakfast"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 500f){
+                money -= 500f;
                 gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Breakfast");
@@ -418,8 +418,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New flavor - Breakfast");
         }
         else if (upgradeChosen == "New flavor - Lunch"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 600f){
+                money -= 600f;
                 gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Lunch");
@@ -427,8 +427,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New flavor - Lunch");
         }
         else if (upgradeChosen == "New flavor - Dinner"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 700f){
+                money -= 700f;
                 gumProductionSpeed += 0.3333f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Dinner");
@@ -436,8 +436,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New flavor - Dinner");
         }
         else if (upgradeChosen == "OompaLoompa Housing"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 50000f){
+                money -= 50000f;
                 stockProductionSpeed += 0.3f;
                 upgradeSound.Play();
                 topFactory.enabled = true;
@@ -446,8 +446,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New flavor - Dinner");
         }
         else if (upgradeChosen == "3-Course's Dinner Gum"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 900f){
+                money -= 900f;
                 gumProductionSpeed += 1f;
                 stockSaleSpeed *= 4f;
                 upgradeSound.Play();
@@ -456,8 +456,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("3-Course's Dinner Gum");
         }
         else if (upgradeChosen == "Gobstoppers"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 30000f){
+                money -= 30000f;
                 upgradeSound.Play();
                 leftFactory.enabled = true;
                 GobstopperStock.enabled = true;
@@ -467,8 +467,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Gobstoppers");
         }
         else if (upgradeChosen == "New flavors"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 800f){
+                money -= 800f;
                 stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavors");
@@ -476,8 +476,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New flavors");
         }
         else if (upgradeChosen == "A variety of flavors, One Gobstopper"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 800f){
+                money -= 800f;
                 gobStopperProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("A variety of flavors, One Gobstopper");
@@ -485,8 +485,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("A variety of flavors, One Gobstopper");
         }
         else if (upgradeChosen == "New recipe - Longer lasting"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 600f){
+                money -= 600f;
                 gobStopperProductionSpeed += 1.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("New recipe - Longer lasting");
@@ -494,8 +494,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("New recipe - Longer lasting");
         }
         else if (upgradeChosen == "Experimenting phase"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 1000f){
+                money -= 1000f;
                 gobStopperProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Experimenting phase");
@@ -503,8 +503,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Experimenting phase");
         } 
         else if (upgradeChosen == "24h Gobstoppers!"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 4000f){
+                money -= 4000f;
                 stockSaleSpeed *= 1f;
                 upgradeSound.Play();
                 RemoveUpgrade("24h Gobstoppers!");
@@ -512,8 +512,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("24h Gobstoppers!");
         }
         else if (upgradeChosen == "Everlasting Gobstoppers"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 9000f){
+                money -= 9000f;
                 stockSaleSpeed *= 5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Everlasting Gobstoppers");
@@ -521,8 +521,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Everlasting Gobstoppers");
         }
         else if (upgradeChosen == "Oompa Loompa Wellness program"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 10000f){
+                money -= 10000f;
                 stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Wellness program");
@@ -530,8 +530,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Oompa Loompa Wellness program");
         }
         else if (upgradeChosen == "Oompa Loompa Eficiency Training"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 1500f){
+                money -= 1500f;
                 stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Eficiency Training");
@@ -539,8 +539,8 @@ public class WonkasFactory : MonoBehaviour{
             Debug.Log("Oompa Loompa Eficiency Training");
         }
         else if (upgradeChosen == "Oompa Loompa Retirement plan"){
-            if(money >= 15f){
-                money -= 15f;
+            if(money >= 20000f){
+                money -= 20000f;
                 stockProductionSpeed += 0.5f;
                 upgradeSound.Play();
                 RemoveUpgrade("Oompa Loompa Retirement plan");
