@@ -110,6 +110,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text CostText;
 
     [SerializeField] private Image chocBrilho;
+    private Color chocColor;
 
 
     private double money;
@@ -151,6 +152,8 @@ public class WonkasFactory : MonoBehaviour{
         GumStock.enabled = false;
         GobstopperStock.enabled = false;
         warning.enabled = false;
+
+        chocColor = chocBrilho.color;
 
         oompa1.enabled = false;
         oompa2.enabled = false;
@@ -257,31 +260,34 @@ public class WonkasFactory : MonoBehaviour{
             CostText.text = "";
         }
 
-    if (rightFactory.enabled == false && oompaQuantity < 4){
-            warning.enabled = false;
-    }  
-    else if (rightFactory.enabled == false && oompaQuantity >= 4){
-            warning.enabled = true;
-    }
-    else if (rightFactory.enabled == true && oompaQuantity < 16){
-            warning.enabled = false;
-    }    
-    else if (rightFactory.enabled == true && topFactory.enabled == false && oompaQuantity >= 16){
-            warning.enabled = true;
-    }
-    else if (topFactory.enabled == true && oompaQuantity < 19){
-            warning.enabled = false;
-    }   
-    else if (topFactory.enabled == true && leftFactory.enabled == false && oompaQuantity >= 19){
-            warning.enabled = true;
-    }  
-    else if (leftFactory.enabled == true && oompaQuantity < 29){
-            warning.enabled = false;
-    } 
-    else if (leftFactory.enabled == true && oompaQuantity >= 29){
-            warning.enabled = true;
-            warning.text = "Maximum number of Oompa Loompas reached";
-    }   
+        if (rightFactory.enabled == false && oompaQuantity < 4){
+                warning.enabled = false;
+        }  
+        else if (rightFactory.enabled == false && oompaQuantity >= 4){
+                warning.enabled = true;
+        }
+        else if (rightFactory.enabled == true && oompaQuantity < 16){
+                warning.enabled = false;
+        }    
+        else if (rightFactory.enabled == true && topFactory.enabled == false && oompaQuantity >= 16){
+                warning.enabled = true;
+        }
+        else if (topFactory.enabled == true && oompaQuantity < 19){
+                warning.enabled = false;
+        }   
+        else if (topFactory.enabled == true && leftFactory.enabled == false && oompaQuantity >= 19){
+                warning.enabled = true;
+        }  
+        else if (leftFactory.enabled == true && oompaQuantity < 29){
+                warning.enabled = false;
+        } 
+        else if (leftFactory.enabled == true && oompaQuantity >= 29){
+                warning.enabled = true;
+                warning.text = "Maximum number of Oompa Loompas reached";
+        }
+
+
+        Debug.Log(chocColor.a);
     }
 
     public void ButtonsSet(){
@@ -346,7 +352,10 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 200f){
                 money -= 200f;
                 chocolateProductionSpeed += 2f;
-                StartCoroutine(Fade());
+
+                chocColor.a = 255f;
+                StartCoroutine(Fade(chocColor));
+
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
             }
@@ -657,12 +666,12 @@ public class WonkasFactory : MonoBehaviour{
    
     }
 
-    IEnumerator Fade(){
+    IEnumerator Fade(Color a){
+        Color c = a;
         while (true){
-            Color c = chocBrilho.material.color;
             for (float alpha = 255f; alpha >= 0; alpha -= 1f){
                 c.a = alpha;
-                chocBrilho.material.color = c;
+                a = c;
                 yield return null;
             }
         }

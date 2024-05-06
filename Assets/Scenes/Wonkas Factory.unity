@@ -2672,7 +2672,7 @@ MonoBehaviour:
   button3: {fileID: 1589988470}
   BoostText: {fileID: 1137405279}
   CostText: {fileID: 512950371}
-  chocBrilho: {fileID: 0}
+  chocBrilho: {fileID: 1356280471}
   chocStock: 0
   gumStock: 0
   gobStock: 0
@@ -3339,7 +3339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
