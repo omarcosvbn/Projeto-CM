@@ -47,11 +47,6 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Button Upgrade_button1;
     [SerializeField] private Button Upgrade_button2;
     [SerializeField] private Button Upgrade_button3;
-    //[SerializeField] private Button Upgrade_button4;
-   // [SerializeField] private Text Upgrade_DescriptionText1;
-    //[SerializeField] private Text Upgrade_DescriptionText2;
-    //[SerializeField] private Text Upgrade_DescriptionText3;
-    //[SerializeField] private Text Upgrade_DescriptionText4;
 
     [SerializeField] private Text DescriptionText;
 
@@ -110,10 +105,11 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Buttons button1;
     [SerializeField] private Buttons button2;
     [SerializeField] private Buttons button3;
-   // [SerializeField] private Buttons button4;
 
     [SerializeField] private Text BoostText;
     [SerializeField] private Text CostText;
+
+    [SerializeField] private Image chocBrilho;
 
 
     private double money;
@@ -148,7 +144,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 0;
+        money = 10000000;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
@@ -242,7 +238,6 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
-      //  Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         if(button1.isOn == true) {
             DescriptionText.text = Upgrade_1.Description;
@@ -256,10 +251,6 @@ public class WonkasFactory : MonoBehaviour{
             DescriptionText.text = Upgrade_3.Description;
             BoostText.text = Upgrade_3.Boost;
             CostText.text = Upgrade_3.Cost;
-
-        //}else if(button4.isOn == true){
-           // DescriptionText.text = Upgrade_4.Description;
-          //  BoostText.text = Upgrade_4.Boost;
         }else{
             DescriptionText.text = "";
             BoostText.text = "";
@@ -303,20 +294,11 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
-        //Upgrade Upgrade_4 = availableUpgrades.Count > 3 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         // Setting text
         Upgrade_button1.transform.GetChild(0).GetComponent<Text>().text = Upgrade_1.Name;
         Upgrade_button2.transform.GetChild(0).GetComponent<Text>().text = Upgrade_2.Name;
         Upgrade_button3.transform.GetChild(0).GetComponent<Text>().text = Upgrade_3.Name;
-        //Upgrade_button4.transform.GetChild(0).GetComponent<Text>().text = Upgrade_4.Name;
-
-
-        // Replacing the X with increase value
-        //Upgrade_DescriptionText1.text = Upgrade_1.Name;
-        //Upgrade_DescriptionText2.text = Upgrade_2.Name;
-        //Upgrade_DescriptionText3.text = Upgrade_3.Name;
-        //Upgrade_DescriptionText4.text = Upgrade_4.Name;
     }
 
     public void RemoveUpgrade(string upgradeName){
@@ -364,6 +346,7 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 200f){
                 money -= 200f;
                 chocolateProductionSpeed += 2f;
+                StartCoroutine(Fade());
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
             }
@@ -674,13 +657,24 @@ public class WonkasFactory : MonoBehaviour{
    
     }
 
+    IEnumerator Fade(){
+        while (true){
+            Color c = chocBrilho.material.color;
+            for (float alpha = 255f; alpha >= 0; alpha -= 1f){
+                c.a = alpha;
+                chocBrilho.material.color = c;
+                yield return null;
+            }
+        }
+    }
+
+
 
     public class Upgrade{
         public string Name { get; set; }
         public string Description { get; set; }
         public string Boost { get; set; }
         public string Cost { get; set; }
-
         public int Order { get; set; }
     }
 }
