@@ -47,7 +47,6 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Button Upgrade_button1;
     [SerializeField] private Button Upgrade_button2;
     [SerializeField] private Button Upgrade_button3;
-
     [SerializeField] private Text DescriptionText;
 
     [SerializeField] private Image moneyBar;
@@ -55,6 +54,8 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text chocStockText;
     [SerializeField] private Text gumStockText;
     [SerializeField] private Text gobStockText;
+    [SerializeField] private Image gumStockDisplay;
+    [SerializeField] private Image gobStockDisplay;
     [SerializeField] private Text Oompas;
     [SerializeField] public Text warning;
 
@@ -152,6 +153,8 @@ public class WonkasFactory : MonoBehaviour{
         GumStock.enabled = false;
         GobstopperStock.enabled = false;
         warning.enabled = false;
+        gumStockDisplay.enabled = false;
+        gobStockDisplay.enabled = false;
 
         chocColor = chocBrilho.color;
 
@@ -395,6 +398,7 @@ public class WonkasFactory : MonoBehaviour{
                 upgradeSound.Play();
                 rightFactory.enabled = true;
                 GumStock.enabled = true;
+                gumStockDisplay.enabled = true;
                 gumAvailable = true;
                 RemoveUpgrade("Bubblegum");
             }
@@ -453,6 +457,7 @@ public class WonkasFactory : MonoBehaviour{
                 upgradeSound.Play();
                 leftFactory.enabled = true;
                 GobstopperStock.enabled = true;
+                gobStockDisplay.enabled = true;
                 gobAvailable = true;
                 RemoveUpgrade("Gobstoppers");
             }
