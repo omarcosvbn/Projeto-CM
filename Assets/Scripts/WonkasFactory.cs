@@ -109,7 +109,11 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text CostText;
 
     [SerializeField] private Image chocBrilho;
-    private Color chocColor;
+
+    public float fadeSpeed = 1.0f;
+
+    private bool isFading = false;
+    private float targetAlpha = 0;
 
 
     private double money;
@@ -144,7 +148,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 0;
+        money = 10000;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
@@ -154,7 +158,6 @@ public class WonkasFactory : MonoBehaviour{
         gumStockDisplay.enabled = false;
         gobStockDisplay.enabled = false;
 
-        chocColor = chocBrilho.color;
 
         oompa1.enabled = false;
         oompa2.enabled = false;
@@ -299,6 +302,20 @@ public class WonkasFactory : MonoBehaviour{
             oompaPrice.text = "1000$";
         }
 
+        if (isFading){
+            // Calculate new alpha value
+            float currentAlpha = chocBrilho.color.a;
+            float newAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
+
+            // Apply new alpha value to the image
+            chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, newAlpha);
+
+            // Check if the fade is complete
+            if (Mathf.Abs(newAlpha - targetAlpha) < 0f)
+            {
+                isFading = false;
+            }
+        }
     }
 
     public void ButtonsSet(){
@@ -384,8 +401,8 @@ public class WonkasFactory : MonoBehaviour{
                 chocolateProductionSpeed += 2f;
                 stockSaleSpeed *= 2f;
 
-                chocColor.a = 255f;
-                StartCoroutine(Fade(chocColor));
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 255f);
+                isFading = true;
 
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
@@ -701,15 +718,10 @@ public class WonkasFactory : MonoBehaviour{
    
     }
 
-    IEnumerator Fade(Color a){
-        Color c = a;
-        while (true){
-            for (float alpha = 255f; alpha >= 0; alpha -= 1f){
-                c.a = alpha;
-                a = c;
-                yield return null;
-            }
-        }
+    public void StartFade(float targetAlphaValue){
+        // Set the target alpha value and start fading
+        targetAlpha = targetAlphaValue;
+        isFading = true;
     }
 
 
