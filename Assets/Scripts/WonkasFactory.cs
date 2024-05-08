@@ -109,11 +109,15 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Text CostText;
 
     [SerializeField] private Image chocBrilho;
+    [SerializeField] private Image gumBrilho;
+    [SerializeField] private Image gobBrilho;
 
-    public float fadeSpeed = 1.0f;
-
-    private bool isFading = false;
+    private float fadeSpeed = 0.5f;
     private float targetAlpha = 0;
+
+    private bool chocIsFading = false;
+    private bool gumIsFading = false;
+    private bool gobIsFading = false;
 
 
     private double money;
@@ -148,7 +152,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 10000;
+        money = 0;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
@@ -302,7 +306,7 @@ public class WonkasFactory : MonoBehaviour{
             oompaPrice.text = "1000$";
         }
 
-        if (isFading){
+        if (chocIsFading){
             // Calculate new alpha value
             float currentAlpha = chocBrilho.color.a;
             float newAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
@@ -313,7 +317,35 @@ public class WonkasFactory : MonoBehaviour{
             // Check if the fade is complete
             if (Mathf.Abs(newAlpha - targetAlpha) < 0f)
             {
-                isFading = false;
+                chocIsFading = false;
+            }
+        }
+        if (gumIsFading){
+            // Calculate new alpha value
+            float currentAlpha = gumBrilho.color.a;
+            float newAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
+
+            // Apply new alpha value to the image
+            gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, newAlpha);
+
+            // Check if the fade is complete
+            if (Mathf.Abs(newAlpha - targetAlpha) < 0f)
+            {
+                gumIsFading = false;
+            }
+        }
+        if (gobIsFading){
+            // Calculate new alpha value
+            float currentAlpha = gobBrilho.color.a;
+            float newAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
+
+            // Apply new alpha value to the image
+            gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, newAlpha);
+
+            // Check if the fade is complete
+            if (Mathf.Abs(newAlpha - targetAlpha) < 0f)
+            {
+                gobIsFading = false;
             }
         }
     }
@@ -381,6 +413,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 50f){
                 money -= 50f;
                 chocolateProductionSpeed += 4f;
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 1f);
+                chocIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("More cacao pods");
             }
@@ -389,6 +423,8 @@ public class WonkasFactory : MonoBehaviour{
         else if (upgradeChosen == "Bigger roasters"){
             if(money >= 350f){
                 money -= 350f;
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 1f);
+                chocIsFading = true;
                 upgradeSound.Play();
                 chocolateProductionSpeed += 6f;
                 RemoveUpgrade("Bigger roasters");
@@ -400,10 +436,8 @@ public class WonkasFactory : MonoBehaviour{
                 money -= 200f;
                 chocolateProductionSpeed += 2f;
                 stockSaleSpeed *= 2f;
-
-                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 255f);
-                isFading = true;
-
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 1f);
+                chocIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tempering Machine");
             }
@@ -413,6 +447,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 100f){
                 money -= 100f;
                 stockSaleSpeed *= 1.5f;
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 1f);
+                chocIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("Extra Sugar");
             }
@@ -432,6 +468,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 500f){
                 money -= 500f;
                 stockSaleSpeed *= 1.5f;
+                chocBrilho.color = new Color(chocBrilho.color.r, chocBrilho.color.g, chocBrilho.color.b, 1f);
+                chocIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("Chocolate Tasting Room");
             }
@@ -445,6 +483,8 @@ public class WonkasFactory : MonoBehaviour{
                 GumStock.enabled = true;
                 gumStockDisplay.enabled = true;
                 gumAvailable = true;
+                gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, 1f);
+                gumIsFading = true;
                 RemoveUpgrade("Bubblegum");
             }
             Debug.Log("Bubblegum");
@@ -453,6 +493,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 500f){
                 money -= 500f;
                 gumProductionSpeed += 3.3333f;
+                gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, 1f);
+                gumIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Breakfast");
             }
@@ -462,6 +504,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 1000f){
                 money -= 1000f;
                 gumProductionSpeed += 3.3333f;
+                gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, 1f);
+                gumIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Lunch");
             }
@@ -471,6 +515,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 1500f){
                 money -= 1500f;
                 gumProductionSpeed += 3.3333f;
+                gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, 1f);
+                gumIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavor - Dinner");
             }
@@ -491,6 +537,8 @@ public class WonkasFactory : MonoBehaviour{
                 money -= 900f;
                 gumProductionSpeed += 2f;
                 stockSaleSpeed *= 4f;
+                gumBrilho.color = new Color(gumBrilho.color.r, gumBrilho.color.g, gumBrilho.color.b, 1f);
+                gumIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("3-Course's Dinner Gum");
             }
@@ -504,6 +552,8 @@ public class WonkasFactory : MonoBehaviour{
                 GobstopperStock.enabled = true;
                 gobStockDisplay.enabled = true;
                 gobAvailable = true;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 RemoveUpgrade("Gobstoppers");
             }
             Debug.Log("Gobstoppers");
@@ -512,6 +562,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 2000f){
                 money -= 2000f;
                 gobStopperProductionSpeed += 1f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("New flavors");
             }
@@ -521,6 +573,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 4000f){
                 money -= 4000f;
                 gobStopperProductionSpeed += 1.5f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("A variety of flavors, One Gobstopper");
             }
@@ -530,6 +584,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 5000f){
                 money -= 5000f;
                 gobStopperProductionSpeed += 1f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("New recipe - Longer lasting");
             }
@@ -539,6 +595,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 6200f){
                 money -= 6200f;
                 gobStopperProductionSpeed += 0.5f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("Experimenting phase");
             }
@@ -548,6 +606,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 4000f){
                 money -= 4000f;
                 stockSaleSpeed *= 1.5f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("24h Gobstoppers!");
             }
@@ -557,6 +617,8 @@ public class WonkasFactory : MonoBehaviour{
             if(money >= 20000f){
                 money -= 20000f;
                 stockSaleSpeed *= 5f;
+                gobBrilho.color = new Color(gobBrilho.color.r, gobBrilho.color.g, gobBrilho.color.b, 1f);
+                gobIsFading = true;
                 upgradeSound.Play();
                 RemoveUpgrade("Everlasting Gobstoppers");
             }
@@ -716,12 +778,6 @@ public class WonkasFactory : MonoBehaviour{
             oompa29.enabled = true;
         }
    
-    }
-
-    public void StartFade(float targetAlphaValue){
-        // Set the target alpha value and start fading
-        targetAlpha = targetAlphaValue;
-        isFading = true;
     }
 
 
