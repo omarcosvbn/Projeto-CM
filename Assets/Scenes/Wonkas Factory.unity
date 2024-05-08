@@ -2999,6 +2999,7 @@ MonoBehaviour:
   BoostText: {fileID: 1137405279}
   CostText: {fileID: 512950371}
   chocBrilho: {fileID: 1356280471}
+  fadeSpeed: 1
   chocStock: 0
   gumStock: 0
   gobStock: 0
@@ -3551,8 +3552,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1356280470}
+  m_Children: []
   m_Father: {fileID: 1985907575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3689,11 +3689,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1344976991}
+  m_Father: {fileID: 2048841969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.4491, y: -1.1848}
+  m_AnchoredPosition: {x: 1, y: -0.8}
   m_SizeDelta: {x: 375.3219, y: 124.0164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356280471
@@ -6411,6 +6411,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1356280470}
   - {fileID: 345647317}
   m_Father: {fileID: 1985907575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
