@@ -43,6 +43,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Button Upgrade_button1;
     [SerializeField] private Button Upgrade_button2;
     [SerializeField] private Button Upgrade_button3;
+    [SerializeField] private Button Upgrade_button4;
     [SerializeField] private Text DescriptionText;
 
     [SerializeField] private Image moneyBar;
@@ -104,6 +105,7 @@ public class WonkasFactory : MonoBehaviour{
     [SerializeField] private Buttons button1;
     [SerializeField] private Buttons button2;
     [SerializeField] private Buttons button3;
+    [SerializeField] private Buttons button4;
 
     [SerializeField] private Text BoostText;
     [SerializeField] private Text CostText;
@@ -249,6 +251,7 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_4 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
         if(button1.isOn == true) {
             DescriptionText.text = Upgrade_1.Description;
@@ -262,6 +265,10 @@ public class WonkasFactory : MonoBehaviour{
             DescriptionText.text = Upgrade_3.Description;
             BoostText.text = Upgrade_3.Boost;
             CostText.text = Upgrade_3.Cost;
+        }else if(button4.isOn == true){
+            DescriptionText.text = Upgrade_4.Description;
+            BoostText.text = Upgrade_4.Boost;
+            CostText.text = Upgrade_4.Cost;
         }else{
             DescriptionText.text = "";
             BoostText.text = "";
@@ -358,9 +365,11 @@ public class WonkasFactory : MonoBehaviour{
         }
 
         //posiçao para mandar o botão para fora pq não está a funcionar de outra forma
+        Vector3 pos4 = Upgrade_button3.transform.position;
         Vector3 pos3 = Upgrade_button3.transform.position;
         Vector3 pos2 = Upgrade_button2.transform.position;
         Vector3 pos1 = Upgrade_button1.transform.position;
+        pos4.x += 10000f;
         pos3.x += 10000f;
         pos2.x += 10000f;
         pos1.x += 10000f;
@@ -368,8 +377,11 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade Upgrade_1 = availableUpgrades.Count > 0 ? _Upgrades[availableUpgrades[0]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_2 = availableUpgrades.Count > 1 ? _Upgrades[availableUpgrades[1]] : _Upgrades[availableUpgrades.Count - 1];
         Upgrade Upgrade_3 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[2]] : _Upgrades[availableUpgrades.Count - 1];
+        Upgrade Upgrade_4 = availableUpgrades.Count > 2 ? _Upgrades[availableUpgrades[3]] : _Upgrades[availableUpgrades.Count - 1];
 
-
+        if (availableUpgrades.Count == 4){
+            Upgrade_button3.transform.position = pos4;
+        }
         if (availableUpgrades.Count == 3){
             Upgrade_button3.transform.position = pos3;
         }
@@ -384,6 +396,7 @@ public class WonkasFactory : MonoBehaviour{
         Upgrade_button1.transform.GetChild(0).GetComponent<Text>().text = Upgrade_1.Name;
         Upgrade_button2.transform.GetChild(0).GetComponent<Text>().text = Upgrade_2.Name;
         Upgrade_button3.transform.GetChild(0).GetComponent<Text>().text = Upgrade_3.Name;
+        Upgrade_button4.transform.GetChild(0).GetComponent<Text>().text = Upgrade_4.Name;
     }
 
     public void RemoveUpgrade(string upgradeName){
