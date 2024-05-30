@@ -154,7 +154,7 @@ public class WonkasFactory : MonoBehaviour{
         gumStock = 0;
         gobStock = 0;
         oompaGrade = 0.5f;
-        money = 100000000000000;
+        money = 0;
         rightFactory.enabled = false;
         leftFactory.enabled = false;
         topFactory.enabled = false;
